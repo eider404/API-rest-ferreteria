@@ -83,6 +83,31 @@ routes.delete('/delete/:id',(req, res)=>{//id no existe y campos
 })
 
 
+routes.get('/products/:id',(req, res)=>{// id y dampos
+    
+    if(!(req.params.id)){
+        return res.status(401).json({status: 401, mensaje: "Campos obligarorios", data: req.body})
+    }
+    
+    req.getConnection((err, conn)=>{
+        if(err) { return res.send(err) }
+        
+        conn.query("SELECT * FROM FerrProductos WHERE id = ?", [req.params.id], (err, rows)=>{
+            try {
+                if(rows.length == 0){ throw new Error()}
+                return res.status(200).json({status: 200, mensaje: "Producto unico", data: req.params.id, rows: rows})
+         
+            } catch (error) {
+                return res.status(401).json({status: 401, mensaje: "la id no existe", data: req.params.id, err: error})
+            }
+        })    
+    })
+})
+
+
+
+
+
 
 
 
