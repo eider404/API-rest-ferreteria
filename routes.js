@@ -37,6 +37,33 @@ routes.post('/new',(req, res)=>{
     })
 })
 
+routes.put('/update/:id',(req, res)=>{//id no existe y campos
+    
+    if(!(req.params.id && req.body.nombre && req.body.precio && req.body.img)){
+        return res.status(401).json({status: 401, mensaje: "Campos obligarorios", data: req.body})
+    }
+
+    const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    req.body.fechaCreacion = date
+
+    req.getConnection((err, conn)=>{
+  
+        conn.query("UPDATE FerrProductos set ? WHERE id = ?",[req.body, req.params.id], (err, rows)=>{
+            try {
+                if(rows.affectedRows == 0){ throw new Error()}
+
+                return res.status(200).json({status: 200, mensaje: "Producto Actualizado", data: req.body, rows: rows})
+            } catch (error) {
+                return res.status(401).json({status: 401, mensaje: "la id no existe", data: req.params.id, err: error})
+            }
+        })
+    }) 
+    
+})
+
+
+
+
 
 
 
