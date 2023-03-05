@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/9776/9776370.png">
+    <title>Documentación</title>
+</head>
+<body class="container-fluid">
+
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <h1 class="d-inline-block align-text-top">
+            <img src="https://cdn-icons-png.flaticon.com/512/9776/9776370.png" alt="Logo" width="40" class="d-inline-block align-text-top">
+            DOCUMENTACIÓN API REST FERRETERÍA
+          </h1>
+        </div>
+    </nav>
+    <br>
+
+    <ul class="list-group container-lg">
+        <li class="list-group-item">
+            <h4><span class="badge bg-primary">GET</span> Obtener <strong>Todos</strong> los Productos</h4>
+            <p>Este endpoint devuelve una consulta de todos los productos alojados en la base de datos</p>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                      
+                    </div>
+                    <div class="col-11">
+                        <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                            <li class="list-group-item list-group-item-dark">URL</li>
+                            <li class="list-group-item">https://api-ferreteria.fly.dev/products</li>    
+                        </ul><br>
+
+                        <div class="accordion" id="accordionExample" style="max-width: 700px;">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                  <button class="accordion-button collapsed" style="background-color:rgb(198, 224, 255);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Ejemplo en JavaScript
+                                  </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+
+                                    Codigo en JavaScript:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+fetch('https://api-ferreteria.fly.dev/products')
+  .then(res=> res.json())
+  .then(data => {
+      console.log(data)
+  })
+  .catch(err => console.log(err))
+                                        </pre>
+                                    </div>
+
+                                    <br>
+
+                                    Resultado:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+{
+  "status": 200,
+  "mensaje": "Todos los productos",
+  "rows": [
+    {
+      "id": 3,
+      "nombre": "Rotomartillo",
+      "precio": 23,
+      "img": "https://www.boschtools.com/us/es/ocsmedia/optimized/800x450xe/GBH18V20N.png",
+      "fechaCreacion": "2023-02-24T12:24:27.000Z"
+    },
+    {
+      "id": 4,
+      "nombre": "Martillo",
+      "precio": 170,
+      "img": "https://www.gyptech.com.do/wp-content/uploads/Martillo-Fibra-16-e1664325878184.jpg",
+      "fechaCreacion": "2023-02-24T12:20:24.000Z"
+    }
+  ]
+}
+                                        </pre>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+        </li>
+
+
+
+        <li class="list-group-item">
+            <h4><span class="badge bg-primary">GET</span> Obtener <strong>Determinado</strong> Producto</h4>
+            <p>Este endpoint devuelve una consulta de un producto específico mediante un campo y un valor segun el campo seleccionado</p>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                      
+                    </div>
+                    <div class="col-11">
+                        <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                            <li class="list-group-item list-group-item-dark">URL</li>
+                            <li class="list-group-item">https://api-ferreteria.fly.dev/consulta?campo=<strong style="color: red;">campo</strong>&valor=<strong style="color: red;">valor</strong></li>    
+                        </ul><br>
+
+                        
+                        <table class="table" style="max-width: 700px;">
+                            <thead>
+                              <tr>
+                                <td><strong>campo</strong></td>
+                                <td><strong>valor</strong> ejemplos</td>
+                                <td>Tipo de dato a usar</td>
+                              </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                              <tr>
+                                <td>id</td>
+                                <td>4324</td>
+                                <td>INT</td>
+                              </tr>
+                              <tr>
+                                <td>nombre</td>
+                                <td>Producto1</td>
+                                <td>VARCHAR</td>
+                              </tr>
+                              <tr>
+                                <td>precio</td>
+                                <td>342</td>
+                                <td>INT</td>
+                              </tr>
+                              
+                            </tbody>
+                        </table>
+
+
+                        <div class="accordion" id="accordionExample" style="max-width: 700px;">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                  <button class="accordion-button collapsed" style="background-color: rgb(198, 224, 255);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQuery" aria-expanded="false" aria-controls="collapseQuery">
+                                    Ejemplo en JavaScript
+                                  </button>
+                                </h2>
+                                <div id="collapseQuery" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                    <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                                      <li class="list-group-item list-group-item-info">URL</li>
+                                      <li class="list-group-item">https://api-ferreteria.fly.dev/consulta?campo=nombre&valor=Rotomartillo</li>    
+                                    </ul><br>
+                                    Codigo en JavaScript:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+let campo="nombre";
+let valor="Rotomartillo"
+
+fetch( `https://api-ferreteria.fly.dev/consulta?campo=${campo}&valor=${valor}`)
+        .then(res => res.json())
+        .then( data =>{
+            console.log(data)
+        })
+        .catch(err => console.log(err)); 
+                                        </pre>
+                                    </div>
+
+                                    <br>
+
+ 
+                                    Resultado:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+{
+  "status": 200,
+  "mensaje": "Existente",
+  "data": {
+    "campo": "nombre",
+    "valor": "Rotomartillo"
+  },
+  "rows": [
+    {
+      "id": 3,
+      "nombre": "Rotomartillo",
+      "precio": 23,
+      "img": "https://www.boschtools.com/us/es/ocsmedia/optimized/800x450xe/GBH18V20N.png",
+      "fechaCreacion": "2023-02-24T12:24:27.000Z"
+    }
+  ]
+}
+            
+                                        </pre>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        <li class="list-group-item">
+            <h4><span class="badge text-bg-success">POST</span> <strong>Agregar</strong> Producto</h4>
+            <p>Este endpoint agrega los productos a la base de datos, dichos datos deben ser enviados desde el body</p>
+            
+            <div class="container">
+              <div class="row">
+                  <div class="col">
+                    
+                  </div>
+                  <div class="col-11">
+                      <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                          <li class="list-group-item list-group-item-dark">URL</li>
+                          <li class="list-group-item">https://api-ferreteria.fly.dev/new/</li>    
+                      </ul>
+                      <br>
+
+                      <h5>Requisitos en los "headers"</h5>
+                      <pre style="margin-left: 30px;">
+{
+  'Content-Type': 'application/json'
+}
+                      </pre>
+
+                      <h5>Requisitos para el "body"</h5>
+                      <table class="table" style="max-width: 700px;margin-left: 30px;">
+                        <thead>
+                          <tr>
+                            <td><strong>estructura del body</strong></td>
+                            <td><strong>tipo de dato a usar</strong></td>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td>nombre</td>
+                            <td>VARCHAR</td>
+                          </tr>
+                          <tr>
+                            <td>precio</td>
+                            <td>INT</td>
+                          </tr>
+                          <tr>
+                            <td>img</td>
+                            <td>VARCHAR</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+
+                      
+                        <div class="accordion" id="accordionExample" style="max-width: 700px;">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" style="background-color: rgb(198, 224, 255);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNew" aria-expanded="false" aria-controls="collapseNew">
+                                  Ejemplo en JavaScript
+                                </button>
+                              </h2>
+                              <div id="collapseNew" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  Codigo en JavaScript:
+                                  <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                      <pre>
+const obj = {
+  "nombre": "Flexómetro",
+  "precio": 200,
+  "img": "https://www.gyptech.com.do/wp-content/uploads/CINTA-TRUPER-1800X1800-10M-e1592417473907.jpg",
+}
+
+fetch( `https://api-ferreteria.fly.dev/new/`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify( obj )
+      })
+      .then(res => res.json())
+      .then( data =>{
+          console.log(data)
+      })
+      .catch(err => console.log(err)); 
+                                      </pre>
+                                  </div>
+
+                                  <br>
+
+                                  Resultados:
+                                  <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                      <pre>
+{
+  status: 200,
+  mensaje: 'Producto Agregado',
+  data: {
+    nombre: 'Flexómetro',
+    precio: 200,
+    img: 'https://www.gyptech.com.do/wp-content/uploads/CINTA-TRUPER-1800X1800-10M-e1592417473907.jpg',
+    fechaCreacion: '2023-02-25 04:18:36'
+  },
+  rows: {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 32367,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0
+  }
+}
+                                      </pre>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+        </li>
+
+
+
+        <li class="list-group-item">
+            <h4><span class="badge text-bg-warning">PUT</span> <strong>Actualizar</strong> Producto</h4>
+            <p>Este endpoint actualiza los productos a la base de datos, dichos datos deben ser enviados desde el body y el id en los parametros</p>
+            
+            <div class="container">
+              <div class="row">
+                  <div class="col">
+                    
+                  </div>
+                  <div class="col-11">
+                      <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                          <li class="list-group-item list-group-item-dark">URL</li>
+                          <li class="list-group-item">https://api-ferreteria.fly.dev/update/<strong style="color: red;">:id</strong></li>    
+                      </ul>
+                      <br>
+
+                      <h5>Requisitos en los "headers"</h5>
+                      <pre style="margin-left: 30px;">
+{
+  'Content-Type': 'application/json'
+}
+                      </pre>
+
+                      <h5>Requisitos para el "body"</h5>
+                      <table class="table" style="max-width: 700px;margin-left: 30px;">
+                        <thead>
+                          <tr>
+                            <td><strong>estructura del body</strong></td>
+                            <td><strong>tipo de dato a usar</strong></td>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                          </tr>
+                          <tr>
+                            <td>nombre</td>
+                            <td>VARCHAR</td>
+                          </tr>
+                          <tr>
+                            <td>precio</td>
+                            <td>INT</td>
+                          </tr>
+                          <tr>
+                            <td>img</td>
+                            <td>VARCHAR</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h5>Requisitos para los "parametros"</h5>
+                      <table class="table" style="max-width: 700px;margin-left: 30px;">
+                        <thead>
+                          <tr>
+                            <td><strong>estructura de los parametros</strong></td>
+                            <td><strong>tipo de dato a usar</strong></td>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+
+                      
+                        <div class="accordion" id="accordionExample" style="max-width: 700px;">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" style="background-color: rgb(198, 224, 255);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUpdate" aria-expanded="false" aria-controls="collapseUpdate">
+                                  Ejemplo en JavaScript
+                                </button>
+                              </h2>
+                              <div id="collapseUpdate" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  Codigo en JavaScript:
+                                  <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                      <pre>
+const obj = {
+    id: 5,
+    nombre: 'Flexómetro',
+    precio: 200,
+    img: 'https://www.gyptech.com.do/wp-content/uploads/CINTA-TRUPER-1800X1800-10M-e1592417473907.jpg',
+}
+  
+fetch( `https://api-ferreteria.fly.dev/update/${obj.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify( obj )
+        })
+        .then(res => res.json())
+        .then( data =>{
+            console.log(data)
+        })
+        .catch(err => console.log(err)); 
+                                      </pre>
+                                  </div>
+
+                                  <br>
+
+                                  Resultados:
+                                  <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                      <pre>
+{
+  status: 200,
+  mensaje: 'Producto Actualizado',
+  data: {
+    id: '5',
+    nombre: 'Flexómetro',
+    precio: 200,
+    img: 'https://www.gyptech.com.do/wp-content/uploads/CINTA-TRUPER-1800X1800-10M-e1592417473907.jpg',
+    fechaCreacion: '2023-02-25 04:34:41'
+  },
+  rows: {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '(Rows matched: 1  Changed: 1  Warnings: 0',
+    protocol41: true,
+    changedRows: 1
+  }
+}
+                                      </pre>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+            <h4><span class="badge text-bg-danger">DELETE</span> <strong>Eliminar</strong> Producto</h4>
+            <p>Este endpoint devuelve una consulta de todos los productos alojados en la base de datos</p>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                      
+                    </div>
+                    <div class="col-11">
+                        <ul class="list-group list-group-horizontal" style="margin: 0px 10px; text-align: center;">
+                            <li class="list-group-item list-group-item-dark">URL</li>
+                            <li class="list-group-item">https://api-ferreteria.fly.dev/delete<strong style="color:red">:id</strong></li>    
+                        </ul><br>
+
+                        <h5>Requisitos para los "parametros"</h5>
+                      <table class="table" style="max-width: 700px;margin-left: 30px;">
+                        <thead>
+                          <tr>
+                            <td><strong>estructura de los parametros</strong></td>
+                            <td><strong>tipo de dato a usar</strong></td>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                        <div class="accordion" id="accordionExample" style="max-width: 700px;">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                  <button class="accordion-button collapsed" style="background-color: rgb(198, 224, 255);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Ejemplo en JavaScript
+                                  </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+
+                                    Codigo en JavaScript:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+const obj = {
+    "id": 5
+}
+
+fetch( `https://api-ferreteria.fly.dev/delete/${obj.id}`, {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then( data =>{
+            console.log(data)
+        })
+        .catch(err => console.log(err)); 
+                                        </pre>
+                                    </div>
+
+                                    <br>
+
+                                    Resultado:
+                                    <div class="alert alert-light" role="alert" style="font-family: monospace; font-size: 15px;color: black;background-color: rgb(167, 167, 167);">
+                                        <pre>
+{
+  status: 200,
+  mensaje: 'Producto Eliminado',
+  data: '5',
+  rows: {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0
+  }
+}
+                                        </pre>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+        </li>
+ 
+    </ul>
+    
+</body>
+</html>
