@@ -104,6 +104,27 @@ routes.get('/products/:id',(req, res)=>{// id y dampos
     })
 })
 
+routes.get('/consulta',(req, res)=>{// el valor no existe
+    const query = req.query
+
+    if(!(query.campo && query.valor)){
+        return res.status(401).json({status: 401, mensaje: "Campos obligarorios", data: req.body})
+    }
+
+    req.getConnection((err, conn)=>{
+
+        conn.query(`SELECT * FROM FerrProductos WHERE ${query.campo} = ?`, [query.valor], (err, rows)=>{
+            try {
+                if(rows.length == 0){ throw new Error()}
+
+                return res.status(200).json({status: 200, mensaje: "Existente", data: query, rows: rows})
+            } catch (error) {
+                return res.status(401).json({status: 401, mensaje: `El valor ${query.valor} no existe`, data: query, err: error})
+            }
+        })    
+    })
+})
+
 
 
 
